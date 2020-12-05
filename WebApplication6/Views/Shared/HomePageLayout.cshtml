@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebApplication1</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/main.css" />
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="inner">
+            <a class="logo" asp-area="" asp-controller="Home" asp-action="Index">WastedFoodSystem</a>
+            <nav id="nav">
+                <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            </nav>
+        </div>
+    </header>
+    <a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
+    <!-- Banner -->
+    <section id="banner">
+        <div class="inner">
+            <h1>
+                Wasted food system: <span>
+                    We protect food from wasted <br />
+
+                </span>
+            </h1>
+            <ul class="actions">
+                <li><a asp-area="" asp-controller="Home" asp-action="RegisterSeller" class="button alt">Do you wanna to join with us?</a></li>
+            </ul>
+        </div>
+    </section>
+
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

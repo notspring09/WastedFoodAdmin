@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WastedFoodAdminSystem</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/main.css" />
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="inner">
+            <a class="logo" asp-area="" asp-controller="Home" asp-action="Index">WastedFoodSystem</a>
+            <nav id="nav">
+                @{
+                    var sessionName = new Byte[20];
+                    bool nameOK = Context.Session.TryGetValue("username", out sessionName);
+
+                    if (nameOK)
+                    {
+                        string result = System.Text.Encoding.UTF8.GetString(sessionName);
+                        //<p> Xin chào @result</p>
+                        <a id="home" asp-controller="Home" asp-action="Index">Xin chào @result</a>
+                        <a id="logout" asp-controller="Admin" asp-action="Logout">Đăng xuất</a>
+                    }
+                }
+
+            </nav>
+        </div>
+    </header>
+    <a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
