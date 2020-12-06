@@ -3,9 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using WastedFoodSystemAdmin.wasted_food_data;
 using WebApplication6.Models;
+using WebApplication6.Utils;
 
 namespace WebApplication6.Controllers
 {
@@ -116,10 +119,14 @@ namespace WebApplication6.Controllers
         {
 
             var sellerAccount = await _context.Account.FindAsync(id);
+           
+           
             if (sellerAccount.IsActive == 2)
             {
                 sellerAccount.IsActive = 1;
                 _context.Account.Attach(sellerAccount).Property(x => x.IsActive).IsModified = true;
+                await MailUtils.SendMailGoogleSmtp("WastedFoodSystem@gmail.com", sellerAccount.Email, "Chào mừng bạn đến với Wasted Food", "Tài khoản của bạn đã được thông qua xét duyệt và trở thành thành viên của chúng tôi",
+                                              "WastedFoodSystem@gmail.com", "fall2020@WastedFoodSystem");
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(WaitForActive));
             }
@@ -127,6 +134,17 @@ namespace WebApplication6.Controllers
             {
                 sellerAccount.IsActive = 3;
                 _context.Account.Attach(sellerAccount).Property(x => x.IsActive).IsModified = true;
+                await MailUtils.SendMailGoogleSmtp("WastedFoodSystem@gmail.com", sellerAccount.Email, "Wasted Food thông báo", "Tài khoản của bạn đã bị khóa, vui lòng liên hệ lại với admin thông qua địa chỉ email này: WastedFoodSystem@gmail.com để được hỗ trợ ",
+                                              "WastedFoodSystem@gmail.com", "fall2020@WastedFoodSystem");
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Account));
+            }
+            else if (sellerAccount.IsActive == 3)
+            {
+                sellerAccount.IsActive = 1;
+                _context.Account.Attach(sellerAccount).Property(x => x.IsActive).IsModified = true;
+                await MailUtils.SendMailGoogleSmtp("WastedFoodSystem@gmail.com", sellerAccount.Email, "Wasted Food thông báo", "Tài khoản của bạn đã được mở khóa, vui lòng liên hệ lại với admin thông qua địa chỉ email này: WastedFoodSystem@gmail.com để được hỗ trợ ",
+                                              "WastedFoodSystem@gmail.com", "fall2020@WastedFoodSystem");
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Account));
             }
