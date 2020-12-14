@@ -8,26 +8,20 @@
 
 @using (Html.BeginForm())
 {
-    <p>
+    <div class="d-flex">
 
-        Username: @Html.TextBox("SearchString") <input type="submit" value="Tìm kiếm" />
+        <p>Username:  </p> @Html.TextBox("SearchString") <input class="btn btn-primary" type="submit" value=" Tìm kiếm" />
 
-    </p>
+    </div>
 }
 <table class="table">
-    <thead>
+    <thead class="thead-dark">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Username)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Password)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Phone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ThirdPartyId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Email)
@@ -40,9 +34,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ModifiedDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirebaseUid)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
@@ -73,13 +64,7 @@
                     @Html.DisplayFor(modelItem => item.Username)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Password)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.Phone)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ThirdPartyId)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Email)
@@ -94,13 +79,10 @@
                     @Html.DisplayFor(modelItem => item.ModifiedDate)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.FirebaseUid)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Image)
+                    <img class="img-thumbnail" src="@Html.DisplayFor(modelItem => item.Image)" />
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Address)
@@ -116,9 +98,7 @@
                 </td>
                 <td>
                     <div class="form-group">
-                        <a asp-action="ActiveAccount" asp-route-id="@item.Id" id="btnActive">
-                            <input class="btn btn-primary" value="Vô hiệu hóa" />
-                        </a>
+                        <a asp-action="ActiveAccount" asp-route-id="@item.Id" class="btn btn-danger" role="button">Vô hiệu hóa</a>
                     </div>
                 </td>
             </tr>
