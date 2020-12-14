@@ -1,5 +1,7 @@
 @import url(font-awesome.min.css);
 @import url("https://fonts.googleapis.com/css?family=Lato:300,400,700|Pacifico");
+@import "node_modules/bootstrap/scss/bootstrap";
+
 
 /*
 	Introspect by TEMPLATED
@@ -3159,7 +3161,7 @@
 			text-decoration: none;
 			text-transform: uppercase;
 			font-weight: 700;
-			font-size: .85em;
+			font-size: .65em;
 		}
 
 			#header a:hover {

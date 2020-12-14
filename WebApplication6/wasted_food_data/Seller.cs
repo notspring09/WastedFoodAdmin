@@ -13,6 +13,6 @@ namespace WastedFoodSystemAdmin.wasted_food_data
         public double Longitude { get; set; }
         public string Description { get; set; }
         public DateTime ModifiedDate { get; set; }
-
+        public double Rating { get; set; }
     }
 }

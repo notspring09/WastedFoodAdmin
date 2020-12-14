@@ -33,6 +33,7 @@ namespace WastedFoodSystemAdmin.wasted_food_data
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseMySQL("server=127.0.0.1;port=3306;user=root;password=1234;database=wasted_food_database; convert zero datetime=True");
+                //optionsBuilder.UseMySQL("server=p1us8ottbqwio8hv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com;port=3306;user=opz3hmxpxk0vfl21;password=swc44g1p3ciko317;database=eaur5hgdarhpvk2e; convert zero datetime=True;persistsecurityinfo=True;allowuservariables=True");
             }
         }
 
@@ -482,6 +483,8 @@ namespace WastedFoodSystemAdmin.wasted_food_data
                     .HasColumnName("name")
                     .HasMaxLength(510)
                     .IsUnicode(false);
+
+                entity.Property(e => e.Rating).HasColumnName("rating").HasDefaultValueSql("'NULL'");
             });
 
             OnModelCreatingPartial(modelBuilder);
@@ -492,5 +495,7 @@ namespace WastedFoodSystemAdmin.wasted_food_data
         public DbSet<WebApplication6.Models.AccountSellerViewModel> AccountSellerViewModel { get; set; }
 
         public DbSet<WebApplication6.Models.LoginViewModel> LoginViewModel { get; set; }
+
+        public DbSet<WebApplication6.Models.AccountBuyerViewModel> AccountBuyerViewModel { get; set; }
     }
 }

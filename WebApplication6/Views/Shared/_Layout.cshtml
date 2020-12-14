@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/main.css" />
+
 </head>
 <body>
     <!-- Header -->
@@ -22,12 +23,23 @@
                     if (nameOK)
                     {
                         string result = System.Text.Encoding.UTF8.GetString(sessionName);
-                        //<p> Xin chào @result</p>
-                        <a id="home" asp-controller="Home" asp-action="Index">Xin chào @result</a>
-                        <a id="logout" asp-controller="Admin" asp-action="Logout">Đăng xuất</a>
+                                <div>
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Quản lý Seller <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a asp-controller="SellerManager" style="color:black" asp-action="Account">Tài khoản</a></li>
+                                        <li><a asp-controller="SellerManager" style="color:black" asp-action="Blocked">Tài khoản bị khóa</a></li>
+                                    </ul>
+                                    <a asp-controller="Feedback" asp-action="Index">Quản lý Feedback</a>
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Quản lý Buyer <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a asp-controller="BuyerManager" style="color:black" asp-action="Account">Tài khoản</a></li>
+                                        <li><a asp-controller="BuyerManager" style="color:black" asp-action="Blocked">Tài khoản bị khóa</a></li>
+                                    </ul>
+                                    <a  asp-controller="Report" asp-action="Index">Quản lý báo cáo</a>
+                                    <a  asp-controller="Admin" asp-action="Logout">Đăng xuất</a>
+                                </div>
                     }
                 }
-
             </nav>
         </div>
     </header>

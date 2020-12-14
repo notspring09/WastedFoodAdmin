@@ -20,6 +20,11 @@ namespace WebApplication6.Controllers
             _context = context;
         }
 
+        public async Task<IActionResult> Index()
+        {
+            return await Task.FromResult(View());
+        }
+
         
 
         public async Task<IActionResult> Login()
@@ -27,7 +32,7 @@ namespace WebApplication6.Controllers
             return await Task.FromResult(View());
         }
         public async Task<IActionResult> Validate(Account account)
-        {
+        { 
             var _admin = _context.Account.Where(s => s.Username == account.Username && s.RoleId == 1).FirstOrDefault();
             if (_admin != null)
             {

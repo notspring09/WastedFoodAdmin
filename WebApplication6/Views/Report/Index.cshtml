@@ -1,0 +1,80 @@
+﻿@model IEnumerable<WastedFoodSystemAdmin.wasted_food_data.Report>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Danh sách báo cáo vi phạm</h1>
+
+@using (Html.BeginForm())
+{
+    <p>
+
+        Id: @Html.TextBox("SearchString") <input type="submit" value="Tìm kiếm" />
+
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReporterId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccusedId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReportText)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReportImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReporterId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccusedId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReportText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReportImage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedDate)
+            </td>
+
+        </tr>
+        }
+    </tbody>
+</table>
