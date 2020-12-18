@@ -19,6 +19,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.AccountId)
             </th>
             <th>
@@ -30,32 +33,30 @@
             <th>
                 @Html.DisplayNameFor(model => model.ModifiedDate)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AccountId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FeedbackText)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ModifiedDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FeedbackText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedDate)
+            </td>
+
+        </tr>
         }
     </tbody>
 </table>

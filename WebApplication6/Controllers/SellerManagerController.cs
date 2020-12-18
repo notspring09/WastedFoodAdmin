@@ -12,7 +12,7 @@ using WebApplication6.Utils;
 
 namespace WebApplication6.Controllers
 {
-    //[AuthorizedAction]
+    [AuthorizedAction]
     public class SellerManagerController : Controller
     {
         wasted_food_databaseContext _context;
@@ -144,21 +144,21 @@ namespace WebApplication6.Controllers
             {
                 sellerAccount.IsActive = 1;
                 _context.Account.Attach(sellerAccount).Property(x => x.IsActive).IsModified = true;
-                await MailUtils.SendMailGoogleSmtp("WastedFoodSystem@gmail.com", sellerAccount.Email, "Chào mừng bạn đến với Wasted Food", "Tài khoản của bạn đã được thông qua xét duyệt và trở thành thành viên của chúng tôi dưới đây là thông tin tài khoản của bạn \n " + "Tên tài khoản : " + sellerAccount.Username +"\n" + "Mật khẩu: " + "test",
+                await MailUtils.SendMailGoogleSmtp("WastedFoodSystem@gmail.com", sellerAccount.Email, "Chào mừng bạn đến với Wasted Food", "Tài khoản của bạn đã được thông qua xét duyệt và trở thành thành viên của chúng tôi dưới đây là thông tin tài khoản của bạn \n " + "Tên tài khoản : " + sellerAccount.Username +"\n",
                                               "WastedFoodSystem@gmail.com", "fall2020@WastedFoodSystem");
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(WaitForActive));
             }
             else if (sellerAccount.IsActive == 1)
             {
-                sellerAccount.IsActive = 3;
+                sellerAccount.IsActive = 0;
                 _context.Account.Attach(sellerAccount).Property(x => x.IsActive).IsModified = true;
                 await MailUtils.SendMailGoogleSmtp("WastedFoodSystem@gmail.com", sellerAccount.Email, "Wasted Food thông báo", "Tài khoản của bạn đã bị khóa, vui lòng liên hệ lại với admin thông qua địa chỉ email này: WastedFoodSystem@gmail.com để được hỗ trợ ",
                                               "WastedFoodSystem@gmail.com", "fall2020@WastedFoodSystem");
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Account));
             }
-            else if (sellerAccount.IsActive == 3)
+            else if (sellerAccount.IsActive == 0)
             {
                 sellerAccount.IsActive = 1;
                 _context.Account.Attach(sellerAccount).Property(x => x.IsActive).IsModified = true;

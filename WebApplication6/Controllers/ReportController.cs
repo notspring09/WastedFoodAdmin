@@ -7,6 +7,7 @@ using WastedFoodSystemAdmin.wasted_food_data;
 
 namespace WebApplication6.Controllers
 {
+    [AuthorizedAction]
     public class ReportController : Controller
     {
         wasted_food_databaseContext _context;

@@ -9,6 +9,7 @@ using WebApplication6.Utils;
 
 namespace WebApplication6.Controllers
 {
+    [AuthorizedAction]
     public class BuyerManagerController : Controller
     {
         wasted_food_databaseContext _context;
@@ -27,7 +28,7 @@ namespace WebApplication6.Controllers
                 var seller = _context.Buyer.ToList();
                 var viewModels = (from m in _context.Account.ToList()
                                   join r in _context.Buyer.ToList() on m.Id equals r.AccountId
-                                  where m.RoleId == 1 && m.IsActive == 1
+                                  where m.RoleId == 3 && m.IsActive == 1
                                   select new AccountBuyerViewModel()
                                   {
                                       Id = m.Id,
@@ -59,7 +60,7 @@ namespace WebApplication6.Controllers
                 var seller = _context.Buyer.ToList();
                 var viewModels = (from m in _context.Account.ToList()
                                   join r in _context.Buyer.ToList() on m.Id equals r.AccountId
-                                  where m.RoleId == 1 && m.IsActive == 0
+                                  where m.RoleId == 3 && m.IsActive == 0
                                   select new AccountBuyerViewModel()
                                   {
                                       Id = m.Id,
