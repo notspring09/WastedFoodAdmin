@@ -31,6 +31,7 @@ namespace WebApplication6.Controllers
         {
             return await Task.FromResult(View());
         }
+
         public async Task<IActionResult> Validate(Account account)
         { 
             var _admin = _context.Account.Where(s => s.Username == account.Username && s.RoleId == 1).FirstOrDefault();
