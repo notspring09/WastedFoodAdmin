@@ -16,7 +16,7 @@
 }
 
 <table class="table">
-    <thead>
+    <thead class="thead-dark">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Id)
@@ -63,9 +63,7 @@
                 </td>
                 <td>
                     <div class="form-group">
-                        <a asp-action="ActiveAccount" asp-route-id="@item.Id" id="btnActive">
-                            <input class="btn btn-primary" value="Mở lại tài khoản" />
-                        </a>
+                        <a asp-action="ActiveAccount" asp-route-id="@item.Id" class="btn btn-primary" role="button">Kích hoạt lại tài khoản</a>
                     </div>
                 </td>
             </tr>
